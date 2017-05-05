@@ -102,7 +102,7 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
     private TextView mLabelPosition;
     private TextView mLabelDuration;
     private ImageButton mBtnRestart;
-    private TextView mBtnRetry;
+    private ImageButton mBtnRetry;
     private ImageButton mBtnPlayPause;
     private TextView mBtnSubmit;
     private TextView mLabelCustom;
@@ -305,7 +305,7 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
     @Override
     public void setRetryText(@Nullable CharSequence text) {
         mRetryText = text;
-        mBtnRetry.setText(text);
+        //mBtnRetry.setText(text);
     }
 
     @Override
@@ -776,7 +776,7 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-        if(isInEditMode()) {
+        if (isInEditMode()) {
             return;
         }
 
@@ -850,9 +850,9 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
         mBtnRestart.setOnClickListener(this);
         mBtnRestart.setImageDrawable(mRestartDrawable);
 
-        mBtnRetry = (TextView) mControlsFrame.findViewById(R.id.btnRetry);
+        mBtnRetry = (ImageButton) mControlsFrame.findViewById(R.id.btnRetry);
         mBtnRetry.setOnClickListener(this);
-        mBtnRetry.setText(mRetryText);
+        //mBtnRetry.setText(mRetryText);
 
         mBtnPlayPause = (ImageButton) mControlsFrame.findViewById(R.id.btnPlayPause);
         mBtnPlayPause.setOnClickListener(this);
@@ -1056,7 +1056,7 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
         mLabelDuration.setTextColor(labelColor);
         mLabelPosition.setTextColor(labelColor);
         setTint(mSeeker, labelColor);
-        mBtnRetry.setTextColor(labelColor);
+        //mBtnRetry.setTextColor(labelColor);
         tintSelector(mBtnRetry, labelColor);
         mBtnSubmit.setTextColor(labelColor);
         tintSelector(mBtnSubmit, labelColor);

@@ -55,30 +55,27 @@
         android:paddingLeft="@dimen/evp_button_size"
         android:paddingRight="@dimen/evp_button_size"
         app:srcCompat="@drawable/evp_action_restart"
+        android:visibility="invisible"
         tools:ignore="ContentDescription" />
 
-    <TextView
+    <ImageButton
         android:id="@+id/btnRetry"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="@dimen/evp_content_inset_iconbuttons"
         android:layout_below="@+id/position"
         android:background="?selectableItemBackground"
         android:clickable="true"
-        android:fontFamily="sans-serif-medium"
         android:gravity="center"
-        android:minHeight="@dimen/evp_button_size"
-        android:paddingLeft="@dimen/evp_content_inset"
-        android:paddingRight="@dimen/evp_content_inset"
-        android:text="@string/evp_retry"
-        android:textAllCaps="false"
-        android:textColor="#fff"
-        android:textSize="@dimen/evp_text_size_medium"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/delete"
         tools:ignore="ContentDescription,UnusedAttribute" />
 
     <ImageButton
         android:id="@+id/btnPlayPause"
-        android:layout_width="@dimen/evp_button_size"
-        android:layout_height="@dimen/evp_button_size"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
         android:layout_below="@+id/position"
         android:layout_centerHorizontal="true"
         android:background="?selectableItemBackground"
