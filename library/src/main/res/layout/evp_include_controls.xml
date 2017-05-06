@@ -90,13 +90,11 @@
             android:layout_height="84dp"
             android:layout_below="@+id/position"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="8dp"
             android:layout_marginLeft="16dp"
             android:layout_marginStart="@dimen/evp_content_inset_iconbuttons"
             android:background="?selectableItemBackground"
             android:clickable="true"
             android:gravity="center"
-            android:padding="8dp"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/submit"
             tools:ignore="ContentDescription,UnusedAttribute" />
@@ -109,9 +107,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="6dp"
         android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-medium"
-        android:paddingTop="8dp"
         android:text="   "
         android:textColor="#ffffff"
         android:textSize="14dp" />
@@ -145,7 +141,7 @@
         android:scaleType="fitXY"
         app:srcCompat="@drawable/delete"
         tools:ignore="ContentDescription,UnusedAttribute"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/labelBottom"
         android:layout_alignRight="@+id/duration"
         android:layout_alignEnd="@+id/duration" />
 
