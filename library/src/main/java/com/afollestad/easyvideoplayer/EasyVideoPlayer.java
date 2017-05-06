@@ -104,7 +104,7 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
     private ImageButton mBtnRestart;
     private ImageButton mBtnRetry;
     private ImageButton mBtnPlayPause;
-    private TextView mBtnSubmit;
+    private ImageButton mBtnSubmit;
     private TextView mLabelCustom;
     private TextView mLabelBottom;
 
@@ -201,12 +201,12 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
                 }
 
                 mHideControlsOnPlay = a.getBoolean(R.styleable.EasyVideoPlayer_evp_hideControlsOnPlay, true);
-                mAutoPlay = a.getBoolean(R.styleable.EasyVideoPlayer_evp_autoPlay, false);
+                mAutoPlay = a.getBoolean(R.styleable.EasyVideoPlayer_evp_autoPlay, true);
                 mControlsDisabled = a.getBoolean(R.styleable.EasyVideoPlayer_evp_disableControls, false);
 
-                mThemeColor = a.getColor(R.styleable.EasyVideoPlayer_evp_themeColor,
+               /* mThemeColor = a.getColor(R.styleable.EasyVideoPlayer_evp_themeColor,
                         Util.resolveColor(context, R.attr.colorPrimary));
-
+*/
                 mAutoFullscreen = a.getBoolean(R.styleable.EasyVideoPlayer_evp_autoFullscreen, false);
                 mLoop = a.getBoolean(R.styleable.EasyVideoPlayer_evp_loop, false);
             } finally {
@@ -216,9 +216,9 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
             mLeftAction = LEFT_ACTION_RESTART;
             mRightAction = RIGHT_ACTION_NONE;
             mHideControlsOnPlay = true;
-            mAutoPlay = false;
+            mAutoPlay = true;
             mControlsDisabled = false;
-            mThemeColor = Util.resolveColor(context, R.attr.colorPrimary);
+            //ThemeColor = Util.resolveColor(context, R.attr.colorPrimary);
             mAutoFullscreen = false;
             mLoop = false;
         }
@@ -316,7 +316,7 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
     @Override
     public void setSubmitText(@Nullable CharSequence text) {
         mSubmitText = text;
-        mBtnSubmit.setText(text);
+        //mBtnSubmit.setText(text);
     }
 
     @Override
@@ -375,7 +375,7 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
 
     @Override
     public void setAutoPlay(boolean autoPlay) {
-        mAutoPlay = autoPlay;
+        mAutoPlay = true;
     }
 
     @Override
@@ -513,7 +513,7 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
         mClickFrame.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                toggleControls();
+                //toggleControls();
             }
         });
         mClickFrame.setClickable(true);
@@ -656,7 +656,7 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
     @Override
     public void onSurfaceTextureSizeChanged(SurfaceTexture surfaceTexture, int width, int height) {
         LOG("Surface texture changed: %dx%d", width, height);
-        adjustAspectRatio(width, height, mPlayer.getVideoWidth(), mPlayer.getVideoHeight());
+        adjustAspectRatio(width, height, mPlayer.getVideoWidth(), ViewGroup.LayoutParams.MATCH_PARENT);
     }
 
     @Override
@@ -686,19 +686,7 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
         mSeeker.setMax(mediaPlayer.getDuration());
         setControlsEnabled(true);
 
-        if (mAutoPlay) {
-            if (!mControlsDisabled && mHideControlsOnPlay)
-                hideControls();
-            start();
-            if (mInitialPosition > 0) {
-                seekTo(mInitialPosition);
-                mInitialPosition = -1;
-            }
-        } else {
-            // Hack to show first frame, is there another way?
-            mPlayer.start();
-            mPlayer.pause();
-        }
+        start();
     }
 
     @Override
@@ -829,8 +817,12 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
             mClickFrame.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    toggleControls();
-                    mCallback.onClickVideoFrame(easyVideoPlayer);
+                    if (mPlayer.isPlaying()) {
+                        pause();
+                    } else {
+                        start();
+                    }
+                    //mCallback.onClickVideoFrame(easyVideoPlayer);
                 }
             });
         }
@@ -858,9 +850,8 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
         mBtnPlayPause.setOnClickListener(this);
         mBtnPlayPause.setImageDrawable(mPlayDrawable);
 
-        mBtnSubmit = (TextView) mControlsFrame.findViewById(R.id.btnSubmit);
+        mBtnSubmit = (ImageButton) mControlsFrame.findViewById(R.id.btnSubmit);
         mBtnSubmit.setOnClickListener(this);
-        mBtnSubmit.setText(mSubmitText);
 
         mLabelCustom = (TextView) mControlsFrame.findViewById(R.id.labelCustom);
         mLabelCustom.setText(mCustomLabelText);
@@ -881,8 +872,7 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
             if (mPlayer.isPlaying()) {
                 pause();
             } else {
-                if (mHideControlsOnPlay && !mControlsDisabled)
-                    hideControls();
+
                 start();
             }
         } else if (view.getId() == R.id.btnRestart) {
@@ -1058,7 +1048,6 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
         setTint(mSeeker, labelColor);
         //mBtnRetry.setTextColor(labelColor);
         tintSelector(mBtnRetry, labelColor);
-        mBtnSubmit.setTextColor(labelColor);
         tintSelector(mBtnSubmit, labelColor);
         mLabelCustom.setTextColor(labelColor);
         mLabelBottom.setTextColor(labelColor);
