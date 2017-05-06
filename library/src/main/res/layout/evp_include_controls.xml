@@ -85,19 +85,19 @@
 
 
     <ImageButton
-            android:id="@+id/btnSubmit"
-            android:layout_width="84dp"
-            android:layout_height="84dp"
-            android:layout_below="@+id/position"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="@dimen/evp_content_inset_iconbuttons"
-            android:background="?selectableItemBackground"
-            android:clickable="true"
-            android:gravity="center"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/submit"
-            tools:ignore="ContentDescription,UnusedAttribute" />
+        android:id="@+id/btnSubmit"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_below="@+id/position"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="@dimen/evp_content_inset_iconbuttons"
+        android:background="?selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:gravity="center"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/submit"
+        tools:ignore="ContentDescription,UnusedAttribute" />
 
     <TextView
         android:id="@+id/recordExplanation"
@@ -135,14 +135,14 @@
         android:id="@+id/btnRetry"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:background="?selectableItemBackground"
+        android:layout_alignEnd="@+id/duration"
+        android:layout_alignRight="@+id/duration"
+        android:layout_below="@+id/labelBottom"
+        android:background="?selectableItemBackgroundBorderless"
         android:clickable="true"
         android:gravity="center"
         android:scaleType="fitXY"
         app:srcCompat="@drawable/delete"
-        tools:ignore="ContentDescription,UnusedAttribute"
-        android:layout_below="@+id/labelBottom"
-        android:layout_alignRight="@+id/duration"
-        android:layout_alignEnd="@+id/duration" />
+        tools:ignore="ContentDescription,UnusedAttribute" />
 
 </RelativeLayout>
