@@ -13,6 +13,7 @@
         android:id="@+id/seeker"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layoutDirection="ltr"
         android:layout_marginLeft="@dimen/evp_content_inset_less"
         android:layout_marginRight="@dimen/evp_content_inset_less" />
 
@@ -25,6 +26,7 @@
         android:layout_marginStart="@dimen/evp_content_inset"
         android:fontFamily="sans-serif"
         android:textColor="#fff"
+        android:layoutDirection="ltr"
         android:textSize="@dimen/evp_text_size_small"
         tools:ignore="UnusedAttribute"
         tools:text="00:00" />
@@ -40,6 +42,7 @@
         android:layout_marginRight="@dimen/evp_content_inset"
         android:fontFamily="sans-serif"
         android:textColor="#fff"
+        android:layoutDirection="ltr"
         android:textSize="@dimen/evp_text_size_small"
         tools:ignore="UnusedAttribute"
         tools:text="-05:00" />
@@ -84,33 +87,6 @@
         tools:text="-09:12" />
 
 
-    <ImageButton
-        android:id="@+id/btnSubmit"
-        android:layout_width="84dp"
-        android:layout_height="84dp"
-        android:layout_below="@+id/position"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="@dimen/evp_content_inset_iconbuttons"
-        android:background="?selectableItemBackgroundBorderless"
-        android:clickable="true"
-        android:gravity="center"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/submit"
-        tools:ignore="ContentDescription,UnusedAttribute" />
-
-    <TextView
-        android:id="@+id/recordExplanation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnSubmit"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="6dp"
-        android:layout_marginRight="8dp"
-        android:fontFamily="sans-serif-medium"
-        android:text="   "
-        android:textColor="#ffffff"
-        android:textSize="14dp" />
 
 
     <TextView
@@ -144,5 +120,33 @@
         android:scaleType="fitXY"
         app:srcCompat="@drawable/delete"
         tools:ignore="ContentDescription,UnusedAttribute" />
+
+    <ImageButton
+        android:id="@+id/btnSubmit"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:gravity="center"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/submit"
+        tools:ignore="ContentDescription,UnusedAttribute"
+        android:layout_alignTop="@+id/btnPlayPause"
+        android:layout_centerHorizontal="true" />
+
+
+    <TextView
+        android:id="@+id/recordExplanation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSubmit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="   "
+        android:textColor="#ffffff"
+        android:textSize="14dp" />
+
 
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.afollestad.easyvideoplayer.EasyVideoCallback;
 import com.afollestad.easyvideoplayer.EasyVideoPlayer;
@@ -19,9 +20,14 @@ public class MainActivity extends AppCompatActivity implements EasyVideoCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        player = (EasyVideoPlayer) findViewById(R.id.player);
-        assert player != null;
-        player.setCallback(this);
+        VideoView mVideo = (VideoView) findViewById(R.id.player2);
+
+        mVideo.setVideoURI(Uri.parse("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"));
+        mVideo.start();
+        //player = (EasyVideoPlayer) findViewById(R.id.player);
+        //assert player != null;
+        //player.setSource(Uri.parse("https://s3.amazonaws.com/gllu-assets-staging/uploads/look_video/look-648/look-video-235/83EA7128-5B59-495D-AE35-7BB2DAB4C09D.mp4"));
+        //player.setCallback(this);
         // All further configuration is done from the XML layout.
     }
 

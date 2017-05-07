@@ -685,6 +685,8 @@ public class EasyVideoPlayer extends FrameLayout implements IUserMethods, Textur
         mSeeker.setProgress(0);
         mSeeker.setMax(mediaPlayer.getDuration());
         setControlsEnabled(true);
+        seekTo(mInitialPosition);
+        mInitialPosition = -1;
 
         start();
     }
